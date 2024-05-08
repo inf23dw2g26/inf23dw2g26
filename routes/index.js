@@ -18,8 +18,8 @@ app.use(passport.session());
 
 // Configure Google OAuth 2.0 strategy
 passport.use(new GoogleStrategy({
-    clientID: 'your_google_client_id',
-    clientSecret: 'your_google_client_secret',
+    clientID: '146954126349-jlp6bek411g29mj7dl27p70mssiihf9v.apps.googleusercontent.com',
+    clientSecret: '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',
     callbackURL: 'http://localhost:8080/auth/google/callback',
 },
 (accessToken, refreshToken, profile, done) => {
