@@ -1,25 +1,31 @@
 {
-  "name": "webhoster",
-  "version": "1.0.11",
-  "description": "Api de armazenamento de dominios completo ( M2 Desenvolvimento WEB I)",
+  "name": "inf23dw2g26",
+  "version": "1.0.0",
+  "description": "inf23dw2g26",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
     "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inf23dw2g26/inf23dw2g26.git"
+  },
   "keywords": [
-    "swagger"
+    "WebHoster"
   ],
-  "license": "Unlicense",
-  "private": true,
+  "author": "g26",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inf23dw2g26/inf23dw2g26/issues"
+  },
+  "homepage": "https://github.com/inf23dw2g26/inf23dw2g26#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
-    "connect": "^3.2.0",
-    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "js-yaml": "^3.3.0",
-    "mysql2": "^3.6.5",
-    "node-modules": "^1.0.1",
-    "oas3-tools": "^2.2.3"
+    "express-session": "^1.18.0",
+    "passport": "^0.7.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   }
 }

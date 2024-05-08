@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Dominio = require('../service/DominioService');
+var Dominio = require('../service/DominioService.js');
 
 module.exports.dominioGET = function dominioGET (req, res, next) {
   Dominio.dominioGET()

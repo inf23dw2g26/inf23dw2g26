@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Cliente = require('../service/ClienteService');
+var Cliente = require('../service/ClienteService.js');
 
 module.exports.clienteGET = function clienteGET (req, res, next) {
   Cliente.clienteGET()

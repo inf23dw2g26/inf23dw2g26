@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var PlanoS = require('../service/PlanoService');
+var PlanoS = require('../service/PlanoService.js');
 
 module.exports.planoGET = function planoGET (req, res, next) {
   PlanoS.planoGET()
