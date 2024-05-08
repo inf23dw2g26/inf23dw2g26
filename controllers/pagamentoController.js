@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Pagamento = require('../service/PagamentoService');
+var Pagamento = require('../service/PagamentoService.js');
 
 module.exports.pagamento_get = function pagamento_get (req, res, next) {
   console.log("Olá mundo !");

@@ -2,6 +2,23 @@ const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
+const swaggerui = require('swagger-ui-express');
+const bodyparser = require('body-parser');
+
+//controllers
+
+const middleware = require('./controllers/middleware');
+const protecterRoute = require('./controllers/protectedController');
+require('./controllers/environmentController');
+
+//routes
+
+const authRoute = require('./routes/authRoute');
+const clienteRoute = require('./routes/clienteRoute');
+const dominioRoute = require('./routes/dominioRoute');
+const pagamentoRoute = require('./routes/pagamentoRoute');
+const planoRoute = require('./routes/planoRoute');
+
 
 const app = express();
 
@@ -18,9 +35,9 @@ app.use(passport.session());
 
 // Configure Google OAuth 2.0 strategy
 passport.use(new GoogleStrategy({
-    clientID: '146954126349-jlp6bek411g29mj7dl27p70mssiihf9v.apps.googleusercontent.com',
-    clientSecret: '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',
-    callbackURL: 'http://localhost:8080/auth/google/callback',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URI,
 },
 (accessToken, refreshToken, profile, done) => {
     // Here you can handle user profile and tokens
@@ -45,33 +62,10 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-// Define routes
-app.get('/', (req, res) => {
-    res.send('Welcome! <a href="/auth/google">Login with Google</a>');
-});
-
-// Login route
-app.get('/auth/google', passport.authenticate('google', {
-    scope: ['profile', 'email']
-}));
-
-// Callback route
-app.get('/auth/google/callback', passport.authenticate('google', {
-    successRedirect: '/profile',
-    failureRedirect: '/',
-}));
-
-// Protected route
-app.get('/profile', (req, res) => {
-    if (!req.isAuthenticated()) {
-        return res.redirect('/');
-    }
-
-    const { profile } = req.user;
-    res.send(`Hello ${profile.displayName || profile.name}!`);
-});
+app.use('/', authRoute);
+app.use('/', middleware.isAuthenticated, clienteRoute, dominioRoute, pagamentoRoute, planoRoute);
 
 // Start the server
-app.listen(8080, () => {
-    console.log('Server running on http://localhost:8080');
+app.listen(process.env.NODE_PORT, () => {
+    console.log('Server running on ' + process.env.HOSTNAME + ':' + process.env.NODE_PORT);
 });

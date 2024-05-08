@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: appmysql.dockerfile
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+  healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+        timeout: 10s
+        retries: 15
+  networks:
+    - webhoster-network
+
+  node:
+    depends_on:
+      mysql:
+       condition: service_healthy
+    restart: always
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    container_name: app
+    environment:
+      NODE_PORT: ${NODE_PORT}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_CALLBACK_URI: ${GOOGLE_CALLBACK_URI}
+      SESSION_SECRET: ${SESSION_SECRET}
+      PROTOCOL: ${PROTOCOL}
+      ENV: ${ENV}
+      HOSTNAME: ${HOSTNAME}
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    networks:
+      - webhoster-network
+
+networks:
+  webhoster-network:
+    driver: bridge
