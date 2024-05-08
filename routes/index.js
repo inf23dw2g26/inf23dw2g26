@@ -7,7 +7,7 @@ const app = express();
 
 
 app.use(session({
-    secret: 'your_secret_key',
+    //secret: 'your_secret_key',
     resave: false,
     saveUninitialized: true,
 }));
