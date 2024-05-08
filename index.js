@@ -5,7 +5,7 @@ const session = require('express-session');
 
 const app = express();
 
-// Configure session
+
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
