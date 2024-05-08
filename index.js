@@ -8,7 +8,7 @@ const bodyparser = require('body-parser');
 //controllers
 
 const middleware = require('./controllers/middleware');
-const protecterRoute = require('./controllers/protectedController');
+const protectedController = require('./controllers/protectedController');
 require('./controllers/environmentController');
 
 //routes
@@ -18,10 +18,13 @@ const clienteRoute = require('./routes/clienteRoute');
 const dominioRoute = require('./routes/dominioRoute');
 const pagamentoRoute = require('./routes/pagamentoRoute');
 const planoRoute = require('./routes/planoRoute');
+const swaggerSpec = require('./controllers/swaggerController');
 
 
 const app = express();
-
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
+app.use('/docs', swaggerui.serve, swaggerui.setup(swaggerSpec));
 
 app.use(session({
     secret: 'your_secret_key',
@@ -38,20 +41,12 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URI,
-},
-(accessToken, refreshToken, profile, done) => {
-    // Here you can handle user profile and tokens
-    // For instance, you can save the user in your database
-    const user = {
-        id: profile.id,
-        accessToken,
-        refreshToken,
-        profile
-    };
-
-    // Save user info in session
-    done(null, user);
-}));
+    passReqToCallback: true,
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+      return done(null, profile);
+  }
+));
 
 // Serialize and deserialize user info for session handling
 passport.serializeUser((user, done) => {
@@ -64,6 +59,7 @@ passport.deserializeUser((user, done) => {
 
 app.use('/', authRoute);
 app.use('/', middleware.isAuthenticated, clienteRoute, dominioRoute, pagamentoRoute, planoRoute);
+app.use('/protected', middleware.isLoggedIn, protectedController.getProtectedResource);
 
 // Start the server
 app.listen(process.env.NODE_PORT, () => {

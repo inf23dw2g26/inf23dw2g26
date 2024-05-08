@@ -38,7 +38,7 @@ const swaggerDefinition = {
 
 const swaggerOptions = {
   swaggerDefinition,
-  apis: ["./docs/*/.yaml"], // Substitua pelo caminho correto para seus arquivos YAML
+  apis: ["./docs/**/*.yaml"], // Substitua pelo caminho correto para seus arquivos YAML
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
