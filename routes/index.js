@@ -7,7 +7,7 @@ const app = express();
 
 
 app.use(session({
-    //secret: 'your_secret_key',
+    secret: 'your_secret_key',
     resave: false,
     saveUninitialized: true,
 }));
@@ -17,11 +17,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Configure Google OAuth 2.0 strategy
-//passport.use(new GoogleStrategy({
-    //clientID: 'uisdagh',
-    //clientSecret: 'ouweh',
-    //callbackURL: 'http://localhost:8080/auth/google/callback',
-//},
+passport.use(new GoogleStrategy({
+    clientID: '146954126349-jlp6bek411g29mj7dl27p70mssiihf9v.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'http://localhost:8080/auth/google/callback',
+},
 (accessToken, refreshToken, profile, done) => {
     // Here you can handle user profile and tokens
     // For instance, you can save the user in your database
