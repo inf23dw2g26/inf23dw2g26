@@ -1,13 +1,13 @@
 const express = require('express');
-const consultaController = require('../controllers/consultaController');
+const planoController = require('../controllers/planoController');
 
 const router = express.Router();
 
 // Rotas para manipular as operações CRUD das consultas
-router.get('/consultas', consultaController.list);
-router.post('/consultas', consultaController.create);
-router.get('/consultas/:id', consultaController.getById);
-router.put('/consultas/:id', consultaController.update);
-router.delete('/consultas/:id', consultaController.delete);
+router.get('/plano', planoController.planoGET);
+router.post('/plano', planoController.planoPOST);
+router.get('/plano/:id', planoController.cliente_idplanoGET);
+router.put('/plano/:id', planoController.plano_idPUT);
+router.delete('/plano/:id', planoController.plano_idDELETE);
 
 module.exports = router;

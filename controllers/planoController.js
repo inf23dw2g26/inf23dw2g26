@@ -52,13 +52,3 @@ module.exports.plano_idPUT = function plano_idPUT (req, res, next, body, id) {
       utils.writeJson(res, response);
     });
 };
-
-module.exports.cliente_idplanoGET = function cliente_idplanoGET (req, res, next, id) {
-  PlanoS.cliente_idplanoGET(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};

@@ -1,0 +1,118 @@
+paths:
+  /pagamento:
+    get:
+      tags:
+        - pagamento
+      operationId: pagamentoGET
+      responses:
+        "200":
+          description: Retorna uma lista de pagamentos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pagamento'
+    post:
+      tags:
+        - pagamento
+      operationId: pagamentoPOST
+      requestBody:
+        $ref: '#/components/requestBodies/pagamento'
+      responses:
+        "200":
+          description: Pagamento criado com sucesso
+  /pagamento/{id}:
+    get:
+      tags:
+        - pagamento
+      operationId: pagamento_idGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Retorna um pagamento específico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pagamento'
+    put:
+      tags:
+        - pagamento
+      operationId: pagamento_idPUT
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/pagamento'
+      responses:
+        "200":
+          description: Pagamento atualizado com sucesso
+    delete:
+      tags:
+        - pagamento
+      operationId: pagamento_idDELETE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Pagamento apagado com sucesso
+  /pagamento/{id}/cliente:
+    get:
+      tags:
+        - pagamento
+      operationId: pagamento_id_clienteGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lista de pagamentos associados a um cliente específico
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pagamento'
+components:
+  schemas:
+    pagamento:
+      type: object
+      properties:
+        id:
+          type: integer
+        valor:
+          type: number
+        metodo_de_pagamento:
+          type: string
+        numero_de_transacao:
+          type: string
+        cliente:
+          type: integer
+      example:
+        id: 1
+        valor: 9.99
+        metodo_de_pagamento: cartao de credito
+        numero_de_transacao: CGD54848488
+        cliente: 1
+  requestBodies:
+    pagamento:
+      description: "Pagamento a ser adicionado ou editado"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/pagamento'

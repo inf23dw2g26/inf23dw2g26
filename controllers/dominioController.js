@@ -12,16 +12,6 @@ module.exports.dominioGET = function dominioGET (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-module.exports.dominio_idclienteGET = function dominio_idclienteGET (req, res, next, id) {
-  Dominio.dominio_idclienteGET(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.dominioPOST = function dominioPOST (req, res, next, body) {
   Dominio.dominioPOST(body)
     .then(Dominio.dominio_idGET)

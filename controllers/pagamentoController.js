@@ -55,13 +55,3 @@ module.exports.pagamento_idDELETE = function pagamento_idDELETE (req, res, next,
       utils.writeJson(res, response);
     });
 };
-
-module.exports.pagamento_idclienteGET = function pagamento_idclienteGET (req, res, next, id) {
-  Pagamento.pagamento_idclienteGET(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};

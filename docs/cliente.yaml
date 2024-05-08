@@ -1,0 +1,169 @@
+paths:
+  /cliente:
+    get:
+      tags:
+        - cliente
+      operationId: clienteGET
+      responses:
+        "200":
+          description: Retorna uma lista de clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/cliente'
+    post:
+      tags:
+        - cliente
+      operationId: clientePOST
+      requestBody:
+        $ref: '#/components/requestBodies/cliente'
+      responses:
+        "200":
+          description: Cliente criado com sucesso
+  /cliente/{id}:
+    get:
+      tags:
+        - cliente
+      operationId: cliente_idGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Retorna um cliente específico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cliente'
+    put:
+      tags:
+        - cliente
+      operationId: cliente_idPUT
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/cliente'
+      responses:
+        "200":
+          description: Cliente atualizado com sucesso
+    delete:
+      tags:
+        - cliente
+      operationId: cliente_idDELETE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Cliente deletado com sucesso
+  /cliente/{id}/pagamento:
+    get:
+      tags:
+        - cliente
+      operationId: cliente_id_pagamentoGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lista de pagamentos associados a um cliente específico
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pagamento'
+  /cliente/{id}/dominio:
+    get:
+      tags:
+        - cliente
+      operationId: cliente_id_dominioGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lista de domínios associados a um cliente específico
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/dominio'
+  /cliente/{id}/plano:
+    get:
+      tags:
+        - cliente
+      operationId: cliente_id_planoGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Detalhes do plano associado a um cliente específico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/plano'
+components:
+  schemas:
+    cliente:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        tipo_de_conta:
+          type: string
+        numero_fiscal:
+          type: string
+        email:
+          type: string
+        contacto:
+          type: string
+        plano:
+          type: integer
+        periodicidade_de_pagamento:
+          type: string
+        data_ultimo_pagamento:
+          type: string
+      example:
+        id: 1
+        nome: João Silva
+        tipo_de_conta: Empresarial
+        numero_fiscal: PT000000001
+        email: exemplo@umaia.pt
+        contacto: PT925665656
+        plano: 1
+        periodicidade_de_pagamento: Mensal
+        data_ultimo_pagamento: 2023-11-30
+  requestBodies:
+    cliente:
+      description: "Cliente a ser adicionado ou editado"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/cliente'
+

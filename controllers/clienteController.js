@@ -12,6 +12,33 @@ module.exports.clienteGET = function clienteGET (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+module.exports.getPagamentos = function getPagamentos (req, res, next) {
+  Cliente.getPagamentos()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+module.exports.getDominios = function getDominios (req, res, next) {
+  Cliente.getDominios()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+module.exports.getPlano = function getPlano (req, res, next) {
+  Cliente.getPlano()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
 
 module.exports.clientePOST = function clientePOST (req, res, next, body) {
   Cliente.clientePOST(body)

@@ -19,8 +19,6 @@ exports.pagamentoGET = function() {
     });
   });
 }
-
-
 /**
  *
  * body Pagamento Pagamento que precisa ser adicionado , editado ou removido do negocio (optional)

@@ -1,0 +1,110 @@
+paths:
+  /plano:
+    get:
+      tags:
+        - plano
+      operationId: planoGET
+      responses:
+        "200":
+          description: Retorna uma lista de planos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/plano'
+    post:
+      tags:
+        - plano
+      operationId: planoPOST
+      requestBody:
+        $ref: '#/components/requestBodies/plano'
+      responses:
+        "200":
+          description: Plano criado com sucesso
+  /plano/{id}:
+    get:
+      tags:
+        - plano
+      operationId: plano_idGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Retorna um plano específico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/plano'
+    put:
+      tags:
+        - plano
+      operationId: plano_idPUT
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/plano'
+      responses:
+        "200":
+          description: Plano atualizado com sucesso
+    delete:
+      tags:
+        - plano
+      operationId: plano_idDELETE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Plano apagado com sucesso
+components:
+  schemas:
+    plano:
+      type: object
+      properties:
+        id:
+          type: integer
+        tipo_de_plano:
+          type: string
+        periodicidade:
+          type: string
+        preco:
+          type: number
+        armazenamento:
+          type: string
+        numero_de_contas_de_email:
+          type: integer
+        numero_de_dominios:
+          type: integer
+        largura_de_banda:
+          type: string
+        fidelizacao:
+          type: string
+      example:
+        id: 1
+        tipo_de_plano: Básico
+        periodicidade: Mensal
+        preco: 9.99
+        armazenamento: 10GB
+        numero_de_contas_de_email: 1
+        numero_de_dominios: 1
+        largura_de_banda: 100Gb/s
+        fidelizacao: Nenhuma
+  requestBodies:
+    plano:
+      description: "Plano a ser adicionado ou editado"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/plano'

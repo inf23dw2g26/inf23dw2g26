@@ -1,0 +1,124 @@
+paths:
+  /dominio:
+    get:
+      tags:
+        - dominio
+      operationId: dominioGET
+      responses:
+        "200":
+          description: Retorna uma lista de domínios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/dominio'
+    post:
+      tags:
+        - dominio
+      operationId: dominioPOST
+      requestBody:
+        $ref: '#/components/requestBodies/dominio'
+      responses:
+        "200":
+          description: Dominio criado com sucesso
+  /dominio/{id}:
+    get:
+      tags:
+        - dominio
+      operationId: dominio_idGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Retorna um domínio específico
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dominio'
+    put:
+      tags:
+        - dominio
+      operationId: dominio_idPUT
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/dominio'
+      responses:
+        "200":
+          description: Dominio atualizado com sucesso
+    delete:
+      tags:
+        - dominio
+      operationId: dominio_idDELETE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Dominio apagado com sucesso
+  /dominio/{id}/cliente:
+    get:
+      tags:
+        - dominio
+      operationId: dominio_id_clienteGET
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lista de clientes associados a um domínio específico
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/cliente'
+components:
+  schemas:
+    dominio:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        codigo_TLD:
+          type: string
+        estado:
+          type: boolean
+        data_de_inicio:
+          type: string
+        data_fim:
+          type: string
+        cliente:
+          type: integer
+      example:
+        id: 1
+        nome: Patatas
+        codigo_TLD: .net
+        estado: true
+        data_de_inicio: 2023-01-01
+        data_fim: 2024-01-01
+        cliente: 1
+  requestBodies:
+    dominio:
+      description: "Dominio a ser adicionado ou editado"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/dominio'
