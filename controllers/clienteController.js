@@ -3,7 +3,7 @@
 var utils = require('../utils/writer.js');
 var Cliente = require('../service/ClienteService.js');
 
-module.exports.clienteGET = function clienteGET (req, res, next) {
+module.exports.clienteGET = async function clienteGET (req, res, next) {
   Cliente.clienteGET()
     .then(function (response) {
       utils.writeJson(res, response);
@@ -12,8 +12,8 @@ module.exports.clienteGET = function clienteGET (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-module.exports.getPagamentos = function getPagamentos (req, res, next) {
-  Cliente.getPagamentos()
+module.exports.getPagamentos = async function getPagamentos (req, res, next) {
+  await Cliente.getPagamentos(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -21,8 +21,8 @@ module.exports.getPagamentos = function getPagamentos (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-module.exports.getDominios = function getDominios (req, res, next) {
-  Cliente.getDominios()
+module.exports.getDominios = async function getDominios (req, res, next) {
+  await Cliente.getDominios(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -30,8 +30,8 @@ module.exports.getDominios = function getDominios (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-module.exports.getPlano = function getPlano (req, res, next) {
-  Cliente.getPlano()
+module.exports.getPlano = async function getPlano (req, res, next) {
+  await Cliente.getPlano(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -40,8 +40,8 @@ module.exports.getPlano = function getPlano (req, res, next) {
     });
 };
 
-module.exports.clientePOST = function clientePOST (req, res, next, body) {
-  Cliente.clientePOST(body)
+module.exports.clientePOST = async function clientePOST (req, res, next) {
+  await Cliente.clientePOST(req.body)
     .then(Cliente.cliente_idGET)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -51,8 +51,8 @@ module.exports.clientePOST = function clientePOST (req, res, next, body) {
     });
 };
 
-module.exports.cliente_idDELETE = function cliente_idDELETE (req, res, next, id) {
-  Cliente.cliente_idDELETE(id)
+module.exports.cliente_idDELETE = async function cliente_idDELETE (req, res, next) {
+  await Cliente.cliente_idDELETE(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -61,8 +61,8 @@ module.exports.cliente_idDELETE = function cliente_idDELETE (req, res, next, id)
     });
 };
 
-module.exports.cliente_idGET = function cliente_idGET (req, res, next, id) {
-  Cliente.cliente_idGET(id)
+module.exports.cliente_idGET = async function cliente_idGET (req, res, next) {
+  await Cliente.cliente_idGET(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -71,8 +71,8 @@ module.exports.cliente_idGET = function cliente_idGET (req, res, next, id) {
     });
 };
 
-module.exports.cliente_idPUT = function cliente_idPUT (req, res, next, body, id) {
-  Cliente.cliente_idPUT(body, id)
+module.exports.cliente_idPUT = async function cliente_idPUT (req, res, next) {
+  await Cliente.cliente_idPUT(req.body,req.params.id)
     .then(Cliente.cliente_idGET)
     .then(function (response) {
       utils.writeJson(res, response);

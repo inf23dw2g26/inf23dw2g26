@@ -3,7 +3,7 @@ const clienteController = require('../controllers/clienteController');
 
 const router = express.Router();
 
-// Rotas para manipular as operações CRUD das consultas
+// Definição das rotas para operações CRUD das consultas
 router.get('/cliente', clienteController.clienteGET);
 router.post('/cliente', clienteController.clientePOST);
 router.get('/cliente/:id', clienteController.cliente_idGET);

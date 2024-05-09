@@ -3,7 +3,6 @@ paths:
     get:
       tags:
         - plano
-      operationId: planoGET
       responses:
         "200":
           description: Retorna uma lista de planos
@@ -16,7 +15,6 @@ paths:
     post:
       tags:
         - plano
-      operationId: planoPOST
       requestBody:
         $ref: '#/components/requestBodies/plano'
       responses:
@@ -26,7 +24,6 @@ paths:
     get:
       tags:
         - plano
-      operationId: plano_idGET
       parameters:
         - name: id
           in: path
@@ -43,7 +40,6 @@ paths:
     put:
       tags:
         - plano
-      operationId: plano_idPUT
       parameters:
         - name: id
           in: path
@@ -58,7 +54,6 @@ paths:
     delete:
       tags:
         - plano
-      operationId: plano_idDELETE
       parameters:
         - name: id
           in: path

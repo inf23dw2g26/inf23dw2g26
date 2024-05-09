@@ -3,7 +3,6 @@ paths:
     get:
       tags:
         - cliente
-      operationId: clienteGET
       responses:
         "200":
           description: Retorna uma lista de clientes
@@ -16,7 +15,6 @@ paths:
     post:
       tags:
         - cliente
-      operationId: clientePOST
       requestBody:
         $ref: '#/components/requestBodies/cliente'
       responses:
@@ -24,15 +22,17 @@ paths:
           description: Cliente criado com sucesso
   /cliente/{id}:
     get:
+      summary: obter um cliente
       tags:
         - cliente
-      operationId: cliente_idGET
       parameters:
         - name: id
           in: path
           required: true
+          description: IDdocliente
           schema:
             type: integer
+            format: int64
       responses:
         "200":
           description: Retorna um cliente específico
@@ -43,7 +43,6 @@ paths:
     put:
       tags:
         - cliente
-      operationId: cliente_idPUT
       parameters:
         - name: id
           in: path
@@ -58,7 +57,6 @@ paths:
     delete:
       tags:
         - cliente
-      operationId: cliente_idDELETE
       parameters:
         - name: id
           in: path
@@ -72,7 +70,6 @@ paths:
     get:
       tags:
         - cliente
-      operationId: cliente_id_pagamentoGET
       parameters:
         - name: id
           in: path
@@ -92,7 +89,6 @@ paths:
     get:
       tags:
         - cliente
-      operationId: cliente_id_dominioGET
       parameters:
         - name: id
           in: path
@@ -112,7 +108,6 @@ paths:
     get:
       tags:
         - cliente
-      operationId: cliente_id_planoGET
       parameters:
         - name: id
           in: path

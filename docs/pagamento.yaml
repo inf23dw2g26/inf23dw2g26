@@ -3,7 +3,6 @@ paths:
     get:
       tags:
         - pagamento
-      operationId: pagamentoGET
       responses:
         "200":
           description: Retorna uma lista de pagamentos
@@ -16,7 +15,6 @@ paths:
     post:
       tags:
         - pagamento
-      operationId: pagamentoPOST
       requestBody:
         $ref: '#/components/requestBodies/pagamento'
       responses:
@@ -26,7 +24,6 @@ paths:
     get:
       tags:
         - pagamento
-      operationId: pagamento_idGET
       parameters:
         - name: id
           in: path
@@ -43,7 +40,6 @@ paths:
     put:
       tags:
         - pagamento
-      operationId: pagamento_idPUT
       parameters:
         - name: id
           in: path
@@ -58,7 +54,6 @@ paths:
     delete:
       tags:
         - pagamento
-      operationId: pagamento_idDELETE
       parameters:
         - name: id
           in: path
@@ -72,7 +67,6 @@ paths:
     get:
       tags:
         - pagamento
-      operationId: pagamento_id_clienteGET
       parameters:
         - name: id
           in: path

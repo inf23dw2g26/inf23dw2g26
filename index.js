@@ -58,7 +58,10 @@ passport.deserializeUser((user, done) => {
 });
 
 app.use('/', authRoute);
-app.use('/', middleware.isAuthenticated, clienteRoute, dominioRoute, pagamentoRoute, planoRoute);
+app.use('/', middleware.isAuthenticated, clienteRoute);
+app.use('/', middleware.isAuthenticated, dominioRoute);
+app.use('/', middleware.isAuthenticated, pagamentoRoute);
+app.use('/', middleware.isAuthenticated, planoRoute);
 app.use('/protected', middleware.isLoggedIn, protectedController.getProtectedResource);
 
 // Start the server

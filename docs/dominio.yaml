@@ -3,7 +3,6 @@ paths:
     get:
       tags:
         - dominio
-      operationId: dominioGET
       responses:
         "200":
           description: Retorna uma lista de domínios
@@ -16,7 +15,6 @@ paths:
     post:
       tags:
         - dominio
-      operationId: dominioPOST
       requestBody:
         $ref: '#/components/requestBodies/dominio'
       responses:
@@ -26,7 +24,6 @@ paths:
     get:
       tags:
         - dominio
-      operationId: dominio_idGET
       parameters:
         - name: id
           in: path
@@ -43,7 +40,6 @@ paths:
     put:
       tags:
         - dominio
-      operationId: dominio_idPUT
       parameters:
         - name: id
           in: path
@@ -58,7 +54,6 @@ paths:
     delete:
       tags:
         - dominio
-      operationId: dominio_idDELETE
       parameters:
         - name: id
           in: path
@@ -72,7 +67,6 @@ paths:
     get:
       tags:
         - dominio
-      operationId: dominio_id_clienteGET
       parameters:
         - name: id
           in: path
