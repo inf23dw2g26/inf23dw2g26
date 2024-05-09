@@ -12,8 +12,8 @@ module.exports.dominioGET = function dominioGET (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-module.exports.dominioPOST = function dominioPOST (req, res, next, body) {
-  Dominio.dominioPOST(body)
+module.exports.dominioPOST = async function dominioPOST (req, res, next) {
+  await Dominio.dominioPOST(req.body)
     .then(Dominio.dominio_idGET)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -23,8 +23,8 @@ module.exports.dominioPOST = function dominioPOST (req, res, next, body) {
     });
 };
 
-module.exports.dominio_idDELETE = function dominio_idDELETE (req, res, next, id) {
-  Dominio.dominio_idDELETE(id)
+module.exports.dominio_idDELETE = async function dominio_idDELETE (req, res, next) {
+  await Dominio.dominio_idDELETE(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -33,8 +33,8 @@ module.exports.dominio_idDELETE = function dominio_idDELETE (req, res, next, id)
     });
 };
 
-module.exports.dominio_idGET = function dominio_idGET (req, res, next, id) {
-  Dominio.dominio_idGET(id)
+module.exports.dominio_idGET = async function dominio_idGET (req, res, next) {
+  await Dominio.dominio_idGET(req.params.id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -43,8 +43,8 @@ module.exports.dominio_idGET = function dominio_idGET (req, res, next, id) {
     });
 };
 
-module.exports.dominio_idPUT = function dominio_idPUT (req, res, next, body, id) {
-  Dominio.dominio_idPUT(body, id)
+module.exports.dominio_idPUT = async function dominio_idPUT (req, res, next) {
+  await Dominio.dominio_idPUT(req.body,req.params.id)
   .then(Dominio.dominio_idGET)  
   .then(function (response) {
       utils.writeJson(res, response);
