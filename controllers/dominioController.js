@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Dominio = require('../service/DominioService.js');
 
-module.exports.dominioGET = function dominioGET (req, res, next) {
-  Dominio.dominioGET()
+module.exports.dominioGET = async function dominioGET (req, res, next) {
+  await Dominio.dominioGET()
     .then(function (response) {
       utils.writeJson(res, response);
     })
