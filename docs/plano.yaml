@@ -22,6 +22,7 @@ paths:
           description: Plano criado com sucesso
   /plano/{id}:
     get:
+      summary: Obter um plano
       tags:
         - plano
       parameters:
@@ -30,6 +31,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       responses:
         "200":
           description: Retorna um plano específico

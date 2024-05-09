@@ -22,6 +22,7 @@ paths:
           description: Pagamento criado com sucesso
   /pagamento/{id}:
     get:
+      summary: Obter um pagamento
       tags:
         - pagamento
       parameters:
@@ -30,6 +31,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       responses:
         "200":
           description: Retorna um pagamento específico
