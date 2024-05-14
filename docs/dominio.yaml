@@ -16,7 +16,11 @@ paths:
       tags:
         - dominio
       requestBody:
-        $ref: '#/components/requestBodies/dominio'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dominioInput'
       responses:
         "200":
           description: Dominio criado com sucesso
@@ -47,7 +51,11 @@ paths:
           schema:
             type: integer
       requestBody:
-        $ref: '#/components/requestBodies/dominio'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dominioInput'
       responses:
         "200":
           description: Dominio atualizado com sucesso
@@ -94,25 +102,44 @@ components:
         codigo_TLD:
           type: string
         estado:
-          type: boolean
+          type: integer
         data_de_inicio:
           type: string
-        data_fim:
+          format: date-time
+        data_de_fim:
           type: string
+          format: date-time
         cliente:
           type: integer
       example:
         id: 1
-        nome: Patatas
+        nome: Empresa
         codigo_TLD: .net
-        estado: true
-        data_de_inicio: 2023-01-01
-        data_fim: 2024-01-01
+        estado: 1
+        data_de_inicio: "2023-01-01 00:00"
+        data_de_fim: "2024-01-01 00:00"
         cliente: 1
-  requestBodies:
-    dominio:
-      description: "Dominio a ser adicionado ou editado"
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/dominio'
+    dominioInput:
+      type: object
+      properties:
+        nome:
+          type: string
+        codigo_TLD:
+          type: string
+        estado:
+          type: integer
+        data_de_inicio:
+          type: string
+          format: date-time
+        data_de_fim:
+          type: string
+          format: date-time
+        cliente:
+          type: integer
+      example:
+        nome: Empresa
+        codigo_TLD: .net
+        estado: 1
+        data_de_inicio: "2023-01-01 00:00:00"
+        data_de_fim: "2024-01-01 00:00:00"
+        cliente: 1

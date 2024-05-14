@@ -28,7 +28,7 @@ exports.dominioGET = function(){
 exports.dominioPOST = function(body) {
   return new Promise(function(resolve, reject) {
     console.log(body);
-    mysql.query("INSERT INTO dominio (nome, codigo_TLD, estado, data_de_inicio, data_de_fim, cliente) Values(?,?,?,?,?,?)", [body.nome, body.codigo_TLD, body.estado, body.estado, body.data_de_inicio, body.data_de_fim, body.cliente], function (err, res) {
+    mysql.query("INSERT INTO dominio (nome, codigo_TLD, estado, data_de_inicio, data_de_fim, cliente) Values(?,?,?,?,?,?)", [body.nome, body.codigo_TLD, body.estado, body.data_de_inicio, body.data_de_fim, body.cliente], function (err, res) {
       if (err) {
         console.log(err);
         reject (err);
