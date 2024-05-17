@@ -31,3 +31,31 @@ Requerimentos:
 ***Docker*** - (https://docker.com/)
 
 ***Visual Studio Code*** - (https://code.visualstudio.com/)
+
+### **Optional**
+
+> ***Docker:***
+
+***Dockerhub repository:*** - (https://hub.docker.com/repository/docker/inf23dw2g26/inf23dw2g26/general)
+
+Do a docker pull of the images:
+
+> Mysql:
+```
+docker pull inf23dw2g26/inf23dw2g26:mysql
+```
+> NodeJS APP:
+```
+docker pull inf23dw2g26/inf23dw2g26:mysql
+```
+### **Necessary**
+
+> First, create a clone of the project from github to your machine:
+```
+git clone: https://github.com/inf23dw2g26
+```
+
+> Second, inside of the project folder, open the terminal / prompt / bash and do a docker compose up:
+```
+docker compose up -d --build
+```
