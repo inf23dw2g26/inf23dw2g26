@@ -1,20 +1,20 @@
 ### Overview
 
-The app that we developed has as a function to provide Web domains to multiple clients, that could range from beginner to enterprise levels. These can be configured to their liking based on the level of subscription that they choose having as variables the amount of domains that they can have, the amount of storage between others.
+A aplicação que desenvolvemos tem como função fornecer domínios Web a vários clientes, que podem ir desde o nível de iniciação até ao nível empresarial. Estes podem ser configurados ao seu gosto com base no nível de subscrição que escolherem tendo como variáveis a quantidade de domínios que podem ter, a quantidade de armazenamento entre outros.
 
-The project itself was done by:
+Projeto feito por:
 
 Daniel Nunes(a042051@umaia.pt)
 
 Vasco Neves(a043335@umaia.pt).
 
-### Applications used to develop this project
+### Aplicações utilizadas neste projeto
 
 ***Mysql*** - (https://www.mysql.com/)
 
 ***NodeJS*** - (https://nodejs.org/en)
 
-### Languages Used
+### Linguagens usadas
 
 ***JavaScript*** - (https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
@@ -22,9 +22,9 @@ Vasco Neves(a043335@umaia.pt).
 
 ***Yaml*** - (https://yaml.org/)
 
-### How to use and download our app
+### Como utilizar o codigo
 
-Requirements:
+Requerimentos:
 
 ***Git*** - (http://https://git.com/)
 
