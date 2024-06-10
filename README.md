@@ -46,7 +46,7 @@ docker pull inf23dw2g26/inf23dw2g26:mysql
 ```
 > NodeJS APP:
 ```
-docker pull inf23dw2g26/inf23dw2g26:mysql
+docker pull inf23dw2g26/inf23dw2g26:node
 ```
 ### **Necessary**
 
