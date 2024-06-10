@@ -4,6 +4,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
 const swaggerui = require('swagger-ui-express');
 const bodyparser = require('body-parser');
+const cors = require('cors');
 
 //controllers
 
@@ -22,6 +23,7 @@ const swaggerSpec = require('./controllers/swaggerController');
 
 
 const app = express();
+app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use('/docs', swaggerui.serve, swaggerui.setup(swaggerSpec));
@@ -58,7 +60,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.use('/', authRoute);
-app.use('/', middleware.isAuthenticated, clienteRoute,dominioRoute,pagamentoRoute,planoRoute);
+app.use('/', clienteRoute,dominioRoute,pagamentoRoute,planoRoute);
 app.use('/protected', middleware.isLoggedIn, protectedController.getProtectedResource);
 
 // Start the server
